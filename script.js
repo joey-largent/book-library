@@ -62,6 +62,13 @@ function addBookToLib() {
     const remove = document.createElement('button');
     remove.classList.add('remove-btn');
     remove.textContent = 'x';
+    remove.addEventListener('click', () => {
+        let index = parseInt(newRow.getAttribute('data-index'));
+        myLibrary.splice(index, 1);
+        newRow.remove();
+        updateIndex();
+        console.log(myLibrary);
+    })
 
     newRow.appendChild(title);
     newRow.appendChild(author);
@@ -72,7 +79,14 @@ function addBookToLib() {
     newRow.appendChild(removeCell);
 
     table.appendChild(newRow);
-}
+};
+
+function updateIndex() {
+    const rows = document.querySelectorAll('tr[data-index]');
+    rows.forEach((row, newIndex) => {
+        row.setAttribute('data-index', newIndex);
+    });
+};
 
 document.querySelector('.addBook').addEventListener('click', () => {
    addBookToLib();
