@@ -41,8 +41,12 @@ th {
 
 button {
     border: none;
-    width: 100%;
+    width: 50%;
     display: block;
+}
+
+button:hover, select:hover {
+    cursor: pointer;
 }
 
 td {
